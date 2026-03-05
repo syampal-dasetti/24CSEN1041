@@ -1,0 +1,157 @@
+1)
+A stationery shop gives 10% discount if the total bill exceeds ₹500 otherwise 0% 
+discount. Input: price for 3 items and quantity for 3 items. Compute total price and then 
+apply discount if eligible. Print original total, discount amount, and final amount to pay.
+
+answer)
+prices = list(map(int, input().split()))
+quantities = list(map(int, input().split()))
+
+total = 0
+for i in range(3):
+    total += prices[i] * quantities[i]
+
+if total > 500:
+    discount = total * 0.10
+else:
+    discount = 0
+
+final_amount = total - discount
+
+print(int(total), int(discount), int(final_amount))
+
+Input: 50 40 80 4 3 6       
+Output: 800 80 720  
+Input: 30 55 40 3 4 4       
+Output: 470 0 470 
+
+
+2)
+Given three numbers, return true if they are evenly spaced; that is, sorted in ascending 
+or descending order, with the same distance between them 
+
+s = list(map(int, input("enter the numbers: ").split()))
+
+if s[1] - s[0] == s[2] - s[1]:
+    print("true")
+else:
+    print("false")
+Input: 7 9 12      Output: True 
+Input:30 20 10   Output: True 
+Input 3 9 5         
+Output: False 
+
+3)
+A team of archaeologists discovers an ancient treasure chest in a temple. The chest 
+has a digital lock that opens only when a Perfect Number is entered. 
+The inscription on the chest reads: “The key is a number equal to the sum of its proper 
+divisors (excluding the number itself). Only then shall the treasure be revealed.” 
+You are given a positive integer N. Your task is to help the archaeologists determine 
+whether the number is a Perfect Number.
+
+N=int(input("enter the number: "))
+sum=0
+for i in range (1,N):
+    if N%i==0:
+      sum+=i
+    
+if N==sum:
+    print("perfect number")
+else:
+    print("not a perfect number")
+
+
+
+4)
+A secure communication system transmits messages as strings. 
+For security reasons, the system applies a multi-rule scrubbing algorithm to remove 
+suspicious characters. 
+Each character in the message is indexed starting from 0. 
+The scrubbing rules are: 
+1. Delete every character whose index is divisible by 3 
+2. From the remaining characters: Delete any digit (0–9) that appears at an even index 
+3. From the final string:  If the same character appears consecutively, keep only one 
+occurrence. 
+If after applying all rules the message becomes empty, output -1. 
+Your task is to generate the final decrypted message.
+
+answer)
+
+s = input()
+
+t = ""
+for i in range(len(s)):
+    if i % 3 != 0:
+        t += s[i]
+
+u = ""
+for i in range(len(t)):
+    if not (i % 2 == 0 and t[i].isdigit()):
+        u += t[i]
+
+v = ""
+for ch in u:
+    if v == "" or v[-1] != ch:
+        v += ch
+
+if v != "":
+    v = v.capitalize()
+
+if v == "":
+    print(-1)
+else:
+    print(v)
+
+Input: a1b2c3d4e5f6      Output: Bcdef 
+Input: aa11bb22cc         Ouput:B 
+Input:123456789            Output:-1 
+
+5)
+
+Given a list of integers, return the average of all elements that are not the maximum or 
+minimum. Assume that there is only one instance of each of the maximum or minimum. 
+There will be at least  3 elements in the given list. 
+
+answer)
+
+L = list(map(int, input("enter the numbers: ").split())) 
+mid=len(L)//2
+if len(L)%2==0:
+    m=(L[mid]+L[mid-1])/2
+else:
+    m=L[mid] 
+print(m)
+
+Input: [1,2,3,4,5,6]  output:3.5 
+Input: [5,6,1]           output:6.0
+
+6)
+Given a tuple of student marks in five subjects print the count of students who are in different grades. avg>90 O grade avg 80-90 A grade avg 70-80 B grade avg <70 c grade
+students = ([95, 92, 90, 93, 96],
+            [85, 80, 82, 88, 90],
+            [72, 75, 70, 78, 74],
+            [60, 65, 68, 62, 66])
+
+o = a = b = c = 0
+
+for s in students:
+    avg = sum(s) / 5
+
+    if avg > 90:
+        o += 1
+    elif avg >= 80:
+        a += 1
+    elif avg >= 70:
+        b += 1
+    else:
+        c += 1
+
+print("O Grade:", o)
+print("A Grade:", a)
+print("B Grade:", b)
+print("C Grade:", c)
+#output
+O Grade: 1
+A Grade: 1
+B Grade: 1
+C Grade: 1
